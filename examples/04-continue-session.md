@@ -7,7 +7,7 @@ The user has feedback after the first handoff. Rather than re-prompting `pi` wit
 ## Step 1 — initial handoff
 
 ```bash
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    -p @plan.md
 ```
 
@@ -29,7 +29,7 @@ Add email validation to the signup form:
 EOF
 
 # Continue pi's previous session in this cwd
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    -c \
    -p @followup.md
 ```
@@ -41,13 +41,17 @@ pi --model minimax-cn/MiniMax-M3 --thinking max \
 `pi` sessions are per-cwd. `-c` only finds the right session if you run the command from the same directory as the original handoff. If you changed directory, pass `--session <id>` instead:
 
 ```bash
-# List recent sessions
-pi --list-sessions
+# List recent sessions for this project
+# (session dir name = the project cwd with "/" replaced by "-")
+ls -t ~/.pi/agent/sessions/--Users-zhoujianlong-dev-your-project--/ | head
 
-# Resume by id
-pi --model minimax-cn/MiniMax-M3 --thinking max \
-   --session ses_abc123 \
+# Resume by session file path (a partial UUID works too)
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
+   --session ~/.pi/agent/sessions/--Users-zhoujianlong-dev-your-project--/2026-07-08T08-12-01-343Z_019f40c8-adbf-7e7b-b4b7-10597f7bc4f7.jsonl \
    -p "接着把 dark mode 加上"
+
+# Or let pi show an interactive picker
+pi --resume
 ```
 
 ## When to start fresh instead
@@ -57,7 +61,7 @@ Don't reuse a session across unrelated tasks. If the follow-up is a different fe
 To explicitly fork an existing session (preserve history but branch):
 
 ```bash
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    --fork ses_abc123 \
    -p "try a different approach: ..."
 ```

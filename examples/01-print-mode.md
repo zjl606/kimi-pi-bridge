@@ -7,7 +7,7 @@ You have a small, well-scoped coding task: add a function, fix a typo, rename a 
 ## Command
 
 ```bash
-pi --model minimax-cn/MiniMax-M3 --thinking max -p "在 src/utils/format.ts 里加一个 toKebabCase 函数，把任何字符串转成 kebab-case，并写一个单元测试"
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max -p "在 src/utils/format.ts 里加一个 toKebabCase 函数，把任何字符串转成 kebab-case，并写一个单元测试"
 ```
 
 ## What happens
@@ -33,12 +33,12 @@ This is fine for tasks Kimi is confident about. If the task is risky (touches a 
 
 ```bash
 # With a tool whitelist
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    --tools read,write,edit \
    -p "在 src/utils/format.ts 里加一个 toKebabCase 函数"
 
 # Read-only (ask pi to review, not change)
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    --tools read,grep,find \
    -p "Review src/utils/format.ts for any obvious bugs"
 ```

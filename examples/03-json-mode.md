@@ -7,7 +7,7 @@ Kimi needs to know **which files `pi` actually changed** (not just trust its sel
 ## Command
 
 ```bash
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    --mode json \
    -p "在 src/auth/ 里加 password reset flow（路由 + service + 测试）" \
    > run.jsonl
@@ -50,7 +50,7 @@ jq -r 'select(.type == "message_end" and .message.role == "assistant")
 ## Practical pattern for Kimi
 
 ```bash
-pi --model minimax-cn/MiniMax-M3 --thinking max --mode json -p @plan.md > run.jsonl
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max --mode json -p @plan.md > run.jsonl
 PI_EXIT=$?
 
 # Pull out what changed

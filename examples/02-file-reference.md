@@ -27,7 +27,7 @@ Reduce coupling between auth and profile logic. Currently both live in `src/serv
 EOF
 
 # Step 2: Hand plan + context files to pi
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    -p @plan.md @src/services/user-service.ts
 ```
 
@@ -41,7 +41,7 @@ pi --model minimax-cn/MiniMax-M3 --thinking max \
 
 ```bash
 # Plan + multiple source files for context
-pi --model minimax-cn/MiniMax-M3 --thinking max \
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max \
    -p @plan.md \
    @src/old-module.ts \
    @tests/old-module.test.ts \
@@ -54,7 +54,7 @@ pi --model minimax-cn/MiniMax-M3 --thinking max \
 
 ```bash
 # You have a one-off snippet in mind, no plan file
-cat <<'EOF' | pi --model minimax-cn/MiniMax-M3 --thinking max -p "按这份方案实现"
+cat <<'EOF' | pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max -p "按这份方案实现"
 # Tiny plan
 1. Add a `parseDuration` helper to src/time.ts
 2. Export from index

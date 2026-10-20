@@ -12,7 +12,7 @@ You run:
 
 - **Kimi Code CLI** (`~/.kimi-code/`) as your primary coding agent
 - **`pi`** (`https://pi.dev`) as a secondary coding agent on the same machine
-- A model configured in `pi` that has cheap / generous quota and follows tool instructions reliably — by default **`minimax-cn/MiniMax-M3`**
+- A model configured in `pi` that has cheap / generous quota and follows tool instructions reliably — by default **`minimax-cn/MiniMax-M3.1-Flash-Preview`**
 
 And you want Kimi to stop burning its K3 quota on multi-file edits, boilerplate, and test writing — and instead hand those off to `pi`.
 
@@ -53,12 +53,12 @@ Kimi will route the implementation work to `pi` automatically.
 
 ## Using with a different stack
 
-The skill ships with defaults tuned for **Kimi Code + pi + minimax-cn/MiniMax-M3**. To use it with a different calling agent or default model:
+The skill ships with defaults tuned for **Kimi Code + pi + minimax-cn/MiniMax-M3.1-Flash-Preview**. To use it with a different calling agent or default model:
 
 | You want to change | Where to edit |
 |---|---|
 | Calling agent (Claude Code / Codex / Cursor) | Drop into that agent's `skills/` directory; the description's "Kimi" mentions are cosmetic |
-| Default model | Replace `minimax-cn/MiniMax-M3` with whatever `pi --list-models` reports for your install |
+| Default model | Replace `minimax-cn/MiniMax-M3.1-Flash-Preview` with whatever `pi --list-models` reports for your install |
 | Default thinking level | Replace `max` with whatever your quota can sustain |
 | Planners (call it from a non-Kimi agent) | The "Kimi" wording in the description and prose still applies — it's just the *calling agent*, not the product Kimi |
 
@@ -67,10 +67,12 @@ The skill ships with defaults tuned for **Kimi Code + pi + minimax-cn/MiniMax-M3
 Once installed, this is the default handoff Kimi will use:
 
 ```bash
-pi --model minimax-cn/MiniMax-M3 --thinking max -p @plan.md
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max -p @plan.md
 ```
 
 That's it. Kimi writes a plan to `plan.md`, then runs `pi` with that file as the prompt. You get back the final result on stdout, exit code 0 on success.
+
+> **Model id note** — the MiniMax platform product is **MiniMax-M3.1-Flash**, but `pi` resolves it as `minimax-cn/MiniMax-M3.1-Flash-Preview`. The bare `MiniMax-M3.1-Flash` will not resolve — always use the `-Preview` id. Check what your own install has with `pi --list-models minimax`.
 
 ## What you get
 
@@ -92,7 +94,7 @@ That's it. Kimi writes a plan to `plan.md`, then runs `pi` with that file as the
 Always pin model + thinking for reproducibility:
 
 ```bash
-pi --model minimax-cn/MiniMax-M3 --thinking max -p @plan.md
+pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max -p @plan.md
 ```
 
 See [`SKILL.md`](./SKILL.md) for the full reference and [`examples/`](./examples/) for concrete workflows.
@@ -100,7 +102,7 @@ See [`SKILL.md`](./SKILL.md) for the full reference and [`examples/`](./examples
 ## Recommended handoff pattern
 
 1. Kimi writes the plan to `plan.md`.
-2. Kimi runs `pi --model minimax-cn/MiniMax-M3 --thinking max -p @plan.md` (background if long).
+2. Kimi runs `pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max -p @plan.md` (background if long).
 3. Kimi verifies by running the project's tests/lint.
 4. Kimi reports results to the user.
 5. Iterate with `-c` to continue the `pi` session, or start fresh.
