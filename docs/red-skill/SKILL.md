@@ -66,6 +66,9 @@ Kimi 出方案 → 写 plan.md → 调用 pi 执行 → Kimi 验证结果
 > `minimax-cn/MiniMax-M3.1-Flash-Preview`(provider 是 `minimax-cn`,带 `-Preview` 后缀)。
 > 写裸的 `MiniMax-M3.1-Flash` **解析不了**。用 `pi --list-models minimax` 查本机实际可用的 id。
 > 另外 `pi` 支持 `:<thinking>` 后缀,`--model minimax-cn/MiniMax-M3.1-Flash-Preview:max` 等价于 `--thinking max`。
+> **thinking 档位**:该模型强制 adaptive thinking(`pi` 里配了 `forceAdaptiveThinking`),
+> 所以 `--thinking off` **并不会**真的关掉思考 —— 照样能跑,但一点 token 都省不下来。
+> `off` / `minimal` / `low` / `medium` / `high` / `xhigh` / `max` 全部实测可用,默认保持 `max`。
 
 ## 速查卡
 

@@ -128,6 +128,8 @@ pi --model minimax-cn/MiniMax-M3.1-Flash-Preview --thinking max -p @plan.md
 
 **On the model name** — the MiniMax platform product is **MiniMax-M3.1-Flash**, but the id `pi` uses is `minimax-cn/MiniMax-M3.1-Flash-Preview` (provider `minimax-cn`, `-Preview` suffix). Use the `-Preview` id in the command; the bare `MiniMax-M3.1-Flash` will not resolve. `pi` also accepts a `:<thinking>` suffix, so `--model minimax-cn/MiniMax-M3.1-Flash-Preview:max` is equivalent to adding `--thinking max`.
 
+**On the thinking level** — this model runs adaptive thinking and `pi` forces it on (`forceAdaptiveThinking` in the model catalog), so `--thinking off` does **not** actually skip reasoning: it still runs, it just does not save you anything. `off` / `minimal` / `low` / `medium` / `high` / `xhigh` / `max` all run clean on this model. Keep `max` as the default; don't reach for `off` expecting a cheaper run.
+
 Confirm the id on this machine before the first run:
 
 ```bash

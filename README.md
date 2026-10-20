@@ -59,7 +59,7 @@ The skill ships with defaults tuned for **Kimi Code + pi + minimax-cn/MiniMax-M3
 |---|---|
 | Calling agent (Claude Code / Codex / Cursor) | Drop into that agent's `skills/` directory; the description's "Kimi" mentions are cosmetic |
 | Default model | Replace `minimax-cn/MiniMax-M3.1-Flash-Preview` with whatever `pi --list-models` reports for your install |
-| Default thinking level | Replace `max` with whatever your quota can sustain |
+| Default thinking level | Replace `max` with whatever your quota can sustain — but note this model forces adaptive thinking, so `off` does not actually skip reasoning |
 | Planners (call it from a non-Kimi agent) | The "Kimi" wording in the description and prose still applies — it's just the *calling agent*, not the product Kimi |
 
 ## Quick start
